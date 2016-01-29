@@ -19,3 +19,27 @@ class Matrice(object) :
 		carteRetire = self.getVal(posX,posY)
 		self.matrice[posY][posX] = nvVal
 		return carteRetire
+
+	def setBloc(self,bloc,x,y):
+		for i in range(bloc.nbLignes):
+			for j in range(bloc.nbColonnes):
+				self.setVal(x+i,y+j,bloc.getVal(i,j))
+
+
+	def matrice2preCalque(self):
+		preCalque=Matrice(self.nbLignes*3,self.nbColonnes*3)
+
+		for i in range(matrice.nbLignes):
+			for y in range(matrice.nbColonnes):
+				bloc=self.getVal().carte2mat()
+				preCalque.setBloc(bloc,i*3,j*3)
+
+		return preCalque
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ class Joueur(object):
 		self.nbGuerriers=nbGuerrier
 		self.pa=pa
 		self.pm=pm
+		self.main=[]
 
 	#retourne le nombre de villageois du
 	def getNbVillageois(self):
@@ -39,4 +40,12 @@ class Joueur(object):
 	#attribue le nombre n de guerrier au joueur
 	def setGuerriers(self,n):
 		self.nbGuerriers=n
-	
+
+
+	#prend la carte de la main et la supprime et la retourne
+	def prendreCarte(self):
+		indice=random.ranint(2)
+		
+	def poserCarte(self):
+		pass
+
