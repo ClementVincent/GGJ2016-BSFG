@@ -8,6 +8,7 @@ class Joueur(object):
 		self.pa=pa
 		self.pm=pm
 		self.main=[]
+		self.guerriers={}
 
 	#retourne le nombre de villageois du
 	def getNbVillageois(self):
@@ -44,8 +45,15 @@ class Joueur(object):
 
 	#prend la carte de la main et la supprime et la retourne
 	def prendreCarte(self):
-		indice=random.ranint(2)
-		
-	def poserCarte(self):
-		pass
+		indice=random.randint(2)
+		buff=self.main[buff]
+		self.main.remove(indice)
+		return buff
 
+
+
+	def initGuerrier(self):
+		self.guerriers={Guerrier(numJoueur=self.numJoueur,numGuerrier=i) for i in range(self.getNbGuerrier)}
+	#
+	def retirerGuerrier(numGuerrier):
+		self.guerriers={guerriers for guerriers in self.guerriers if guerriers.numGuerrier!=numGuerrier}

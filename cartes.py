@@ -41,7 +41,7 @@ class Carte(object):
 
 
 	def tournerRandom(self):
-		for i in range(randint(3)):
+		for i in range(randint(0,3)):
 			self.tournerHorraire()
 
 
