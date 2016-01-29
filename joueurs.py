@@ -1,10 +1,42 @@
-class Joueurs(object):
+class Joueur(object):
 	
-	def __init__(self, nbJoueurs=2,nbVillagois=10,nbGuerrier=5,pa=10,pm=5):
-		self.nbJoueurs=nbJoueurs
-		
+	#permet de créer un joueur
+	def __init__(self,numJoueur,nbVillagois=10,nbGuerrier=5,pa=10,pm=5):
+		self.numJoueur=numJoueur
+		self.nbVillagois=nbVillagois
+		self.nbGuerriers=nbGuerrier
+		self.pa=pa
+		self.pm=pm
 
+	#retourne le nombre de villageois du
+	def getNbVillageois(self):
+		return self.nbVillagois
 
-	# crée un joueur, avec son numero, son nombre de guerrier, son nombre de villageois, 
+	#retourne le nombre de guerrier du joueur
+	def getNbGuerrier(self):
+		return self.nbGuerriers
 
-		
+	#retourne le nombre de pa du joueur
+	def getNbPa(self):
+		return self.pa
+
+	#retourne le nombre de pm du joueur
+	def getNbPm(self):
+		return self.pm
+
+	#set le nombre de pa du joueur à n
+	def setPa(self,n):
+		self.pa=n
+
+	#set le nombre de pm du joueur à n
+	def setPm(self,n):
+		self.pm=n
+
+	#attribue le nombre n de villageois au joueur
+	def setVillageois(self,n):
+		self.nbVillagois=n
+
+	#attribue le nombre n de guerrier au joueur
+	def setGuerriers(self,n):
+		self.nbGuerriers=n
+	
