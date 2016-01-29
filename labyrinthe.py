@@ -1,41 +1,52 @@
 from joueurs import *
 from matrice import *
-from carte import *
+from cartes import *
 from inondation import *
-from random import *
+import random
 
 class Labyrinthe (object) :
 	
-	def __init__(self, nbVillageoisTot, nbGuerriersTot, paInit = 2, pmInit= 2, paPas = 1, pmPas = 1) :
+	def __init__(self, nbVillageois = 10, nbGuerriers = 5, paInit = 2, pmInit= 2, paPas = 1, pmPas = 1) :
 		self.joueurs = []
-		for i in range(1,2):
-			self.joueurs.append(Joueurs(i,nbVillageoisTot // 2, nbGuerrierTot // 2, paInit, pmInit))
+		self.lsType = ["croissement", "coins", "droit"]
+		for i in range(1,3):
+			self.joueurs.append(Joueur(i,nbVillageois, nbGuerriers, paInit, pmInit))
 		self.plateau = Matrice()
-		self.joueurCourant = joueurs[random.randint(0,2)]
+		self.joueurCourant = self.joueurs[random.randint(0,1)]
 		self.dicoCarte = self.creerDicoCarte()
+		self.placeCarte()
 		carteCourant = self.tireCarteAlea()
 	
+	def placeCarte (self) :
+		for i in range(self.plateau.nbLignes) :
+			for j in range(self.plateau.nbColonnes) :
+				if j != 9 or i != 9 :
+					self.plateau.setVal(j,i,self.tireCarteAlea())
+		self.plateau.setVal(9,9,Carte(False,False,False,False))
+		
+	
 	def creerDicoCarte (self):
-		dico = { "croissement" : [], "droit" : [], "coins" :  [] }
+		dicoCarte = { "croissement" : [], "droit" : [], "coins" :  []}
 		for i in range(200) :
-			dicoCArte["ceoissement"].append(Carte(True,True,True,False))
+			dicoCarte["croissement"].append(Carte(True,True,True,False))
 		for i in range(150) :
-			dicoCArte["coins"].append(Carte(True,True,False,False))
+			dicoCarte["coins"].append(Carte(True,True,False,False))
 		for i in range(56) :
-			dicoCArte["doit"].append(Carte(True,False,True,False))
+			dicoCarte["droit"].append(Carte(True,False,True,False))
 		return dicoCarte
 	
 	def tireCarteAlea (self) :
-		lsType = ["croissement", "coins", "droit"]
-		for elem in lsType : 
+		for elem in self.lsType : 
 			if self.dicoCarte[elem] == [] :
-				lsType.remove(elem)
+				self.lsType.remove(elem)
 		for elem in self.dicoCarte :
-			if elem not in lsType and dicoCarte[elem] != [] :
-				lsType.append(elem)
-		typeCarte = random.choice(lsType)
-		del self.dicoCarte[typeCarte][0]
-		return self.dicoCarte[typeCarte].tournerRandom()
+			if elem not in self.lsType and self.dicoCarte[elem] != [] :
+				self.lsType.append(elem)
+		typeCarte = random.choice(self.lsType)
+		carte = self.dicoCarte[typeCarte][0]
+		self.dicoCarte[typeCarte].pop(0)
+		carte.tournerRandom()
+		return carte
 	
 	def changerJoueurCourant (self) :
 		self.joueurCourant = (self.joueurCourant + 1) % 2 
@@ -48,5 +59,15 @@ class Labyrinthe (object) :
 	
 	def testActionPossible (self) :
 		return self.getJoueurCourant.getNbPa() != 0
+	
+	def getCoordG (self, numGuer) :
+		for ligne in plateau :
+			for colonne in ligne :
+				if numGuer in platau.getVal(ligne,colonne) :
+					return (ligne,colonne)
+	
+	def jouerTours (self,ordre) :
+		pass
 		
 plateau = Labyrinthe()
+
