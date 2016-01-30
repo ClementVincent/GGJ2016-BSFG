@@ -39,10 +39,6 @@ class Carte(object):
 		self.murEst=stack
 
 
-
 	def tournerRandom(self):
 		for i in range(randint(0,3)):
 			self.tournerHorraire()
-
-
-
