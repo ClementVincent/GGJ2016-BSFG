@@ -8,7 +8,7 @@ class Joueur(object):
 		self.pa=pa
 		self.pm=pm
 		self.main=[]
-		self.guerriers={}
+		self.guerriers=[]
 
 	#retourne le nombre de villageois du
 	def getNbVillageois(self):
@@ -53,7 +53,7 @@ class Joueur(object):
 
 
 	def initGuerrier(self):
-		self.guerriers={Guerrier(numJoueur=self.numJoueur,numGuerrier=i) for i in range(self.getNbGuerrier)}
+		self.guerriers=[Guerrier(numJoueur=self.numJoueur,numGuerrier=i) for i in range(self.getNbGuerrier)]
 	#
-	def retirerGuerrier(numGuerrier):
-		self.guerriers={guerriers for guerriers in self.guerriers if guerriers.numGuerrier!=numGuerrier}
+	def retirerGuerrier(self,numGuerrier):
+		self.guerriers=[guerriers for guerriers in self.guerriers if guerriers.numGuerrier!=numGuerrier]

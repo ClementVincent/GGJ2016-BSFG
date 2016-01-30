@@ -49,4 +49,14 @@ class Labyrinthe (object) :
 	def testActionPossible (self) :
 		return self.getJoueurCourant.getNbPa() != 0
 		
+		#numG2 est le numéro du guerrier attaqué, il va perdre dommages% de point de vie en moins, si jamais il arrive a 0% de hp il meurt et son villageois est libéré
+	def fight(self,numG2,dommages=10):
+		self.joueurs[self.joueurCourant].guerriers[numG2].vie-=dommages
+		if self.joueurs[self.joueurCourant].guerriers[numG2].vie<=0:
+
+			self.joueurs[self.joueurCourant].retirerGuerrier(numG2)
+
+
+
+
 plateau = Labyrinthe()
