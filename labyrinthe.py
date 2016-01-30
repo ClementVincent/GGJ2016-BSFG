@@ -60,12 +60,20 @@ class Labyrinthe (object) :
 	def testActionPossible (self) :
 		return self.getJoueurCourant.getNbPa() != 0
 	
-	def getCoordG (self, numGuer) :
-		for ligne in plateau :
-			for colonne in ligne :
-				if numGuer in platau.getVal(ligne,colonne) :
+	def getCoordG (self,numJoueur,numGuer) :
+		plateau=self.plateau
+		for ligne in range(plateau.nbLignes) :
+			for colonne in range(plateau.nbColonnes) :
+				if (numJoueur,numGuer) in platau.getVal(ligne,colonne).guerriers() :
 					return (ligne,colonne)
 	
+
+	#fonction prennant le guerrier numGuerrier du joueur numJoueur sur le Lab et retournant le guerrier 
+	def getGuerrierL(self,numJoueur,numGuerrier):
+		coordG=self.getCoordG(numJoueur,numGuerrier)
+
+
+	# ordre < M + tuple > id guerrier + direction de déplacement
 	def jouerTours (self,ordre) :
 		pass
 		
