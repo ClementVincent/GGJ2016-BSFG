@@ -12,7 +12,7 @@ class Labyrinthe (object) :
 		for i in range(1,3):
 			self.joueurs.append(Joueur(i,nbVillageois, nbGuerriers, paInit, pmInit))
 		self.plateau = Matrice()
-		self.joueurCourant = self.joueurs[random.randint(0,1)]
+		self.joueurCourant = random.randint(0,1)
 		self.dicoCarte = self.creerDicoCarte()
 		self.placeCarte()
 		carteCourant = self.tireCarteAlea()
