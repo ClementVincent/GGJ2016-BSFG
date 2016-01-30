@@ -64,7 +64,7 @@ class Labyrinthe (object) :
 		plateau=self.plateau
 		for ligne in range(plateau.nbLignes) :
 			for colonne in range(plateau.nbColonnes) :
-				if (numJoueur,numGuer) in platau.getVal(ligne,colonne).guerriers() :
+				if (numJoueur,numGuer) in plateau.getVal(ligne,colonne).guerriers :
 					return (ligne,colonne)
 	
 

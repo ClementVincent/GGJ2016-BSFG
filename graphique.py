@@ -6,7 +6,7 @@ from pygame.locals import *
 pygame.init()
 
 
-def afficheLaby (fenetre, labyrinthe) :
+def afficheLaby (fenetre, labyrinthe, message = "") :
 	myfont = pygame.font.SysFont("monospace",20)
 	FDT = myfont.render("Fin du tour", 1, (255,255,0))
 	fenetre.blit(FDT, (1650, 975))
@@ -25,25 +25,25 @@ def lancerJeu(labyrinthe) :
 			if event.type == QUIT:
 				continuer = 0
 				changement = 0
-				print("ok")
+			coordJC = labyrinthe.getCoordG(labyrinthe.joueurCourant,1)
 			if event.type == KEYDOWN and event.key == K_UP :
-				if labyrinthe.plateauq.getVal(labyrinthe.getCoordG()[1],labyrinthe.getCoordG()[0]).passageNord(labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1]+1,labyrinthe.getCoordG()[0])) :
-					labyrinthe.jouerTour("M",labyrinthe.getCoordG()[0] + 1, labyrinthe.getCoordG()[1])
+				if labyrinthe.plateau.getVal(coordJC[1],coordJC[0]).passageNord(labyrinthe.plateau.getVal(coordJC[1]+1,coordJC[0])) :
+					labyrinthe.jouerTour("M",coordJC[0] + 1, coordJC[1])
 				else : 
 					message = "La position n'est pas acessible"
 			elif event.type == KEYDOWN and event.key == K_DOWN :
-				if labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1],labyrinthe.getCoordG()[0]).passageSud(labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1]-1,labyrinthe.getCoordG()[0])) :
-					labyrinthe.jouerTour("M",labyrinthe.getCoordG()[0]-1, labyrinthe.getCoordG()[1])
+				if labyrinthe.plateau.getVal(coordJC[1],coordJC[0]).passageSud(labyrinthe.plateau.getVal(coordJC[1]-1,coordJC[0])) :
+					labyrinthe.jouerTour("M",coordJC[0]-1, coordJC[1])
 				else : 
 					message = "La position n'est pas acessible"
 			elif event.type == KEYDOWN and event.key == K_LEFT :
-				if labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1],labyrinthe.getCoordG()[0]).passageOuest(labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1],labyrinthe.getCoordG()[0]+1)) :
-					labyrinthe.jouerTour("M",labyrinthe.getCoordG()[0], labyrinthe.getCoordG()[1]-1)
+				if labyrinthe.plateau.getVal(coordJC[1],coordJC[0]).passageOuest(labyrinthe.plateau.getVal(coordJC[1],coordJC[0]+1)) :
+					labyrinthe.jouerTour("M",coordJC[0], coordJC[1]-1)
 				else : 
 					message = "La position n'est pas acessible"
 			elif event.type == KEYDOWN and event.key == K_RIGHT :
-				if labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1],labyrinthe.getCoordG()[0]).passageEst(labyrinthe.plateau.getVal(labyrinthe.getCoordG()[1]+1,labyrinthe.getCoordG()[0]-1)) :
-					labyrinthe.jouerTour("M",labyrinthe.getCoordG()[0], labyrinthe.getCoordG()[1]+1)
+				if labyrinthe.plateau.getVal(coordJC[1],coordJC[0]).passageEst(labyrinthe.plateau.getVal(coordJC[1]+1,coordJC[0]-1)) :
+					labyrinthe.jouerTour("M",coordJC[0], coordJC[1]+1)
 				else : 
 					message = "La position n'est pas acessible"
 			elif event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 975: #clique sur le bouton fin du tour
