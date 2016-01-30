@@ -81,8 +81,15 @@ class Labyrinthe (object) :
 	def fight(self,numG2,dommages=10):
 		self.joueurs[self.joueurCourant].guerriers[numG2].vie-=dommages
 		if self.joueurs[self.joueurCourant].guerriers[numG2].vie<=0:
-
 			self.joueurs[self.joueurCourant].retirerGuerrier(numG2)
+	
+	#~ def finirTour (labyrinthe) :
+		#~ if :
+			#~ res = 0
+		#~ elif :
+			#~ res = 1
+		#~ elif :
+			#~ res = 2
 
 
 

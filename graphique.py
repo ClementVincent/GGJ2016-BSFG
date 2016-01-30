@@ -5,11 +5,18 @@ from pygame.locals import *
 
 pygame.init()
 
+liste[
 
 def afficheLaby (fenetre, labyrinthe, message = "") :
 	myfont = pygame.font.SysFont("monospace",20)
 	FDT = myfont.render("Fin du tour", 1, (255,255,0))
 	fenetre.blit(FDT, (1650, 975))
+	for x in range(labyrinthe.plateau.nbLignes) :
+		for y in range(labyrinthe.plateau.nbColonnes):
+			carte = labyrinthe.plateau.getVal(y,x)
+			i = carte.codeCarte()
+			carte = pygame.image.load("images/Carte"+str(i)+".jpeg").convert()
+			fenetre.blit(carte,(x*100,y*100))
 	pygame.display.flip()
 
 
