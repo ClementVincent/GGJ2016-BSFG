@@ -42,3 +42,12 @@ class Carte(object):
 	def tournerRandom(self):
 		for i in range(randint(0,3)):
 			self.tournerHorraire()
+
+	def passageNord(self,c2):
+		return not self.murNord and not c2.murSud
+	def passageSud(self,c2):
+		return not self.murSud and not c2.murNord
+	def passageOuest(self,c2):
+		return not self.murOuest and not c2.murEst
+	def passageEst(self,c2):
+		return not self.murEst and not c2.murOuest
